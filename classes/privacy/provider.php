@@ -15,20 +15,27 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Language strings.
+ * Privacy main class.
  *
  * @package availability_coursecompleted
- * @copyright 2015 iplusacademy (www.iplusacademy.org)
+ * @copyright 2018 iplusacademy (www.iplusacademy.org)
  * @author Renaat Debleu {info@eWallah.net}
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['description'] = 'Allow only students who already (or not yet) completed this course.';
-$string['getdescription'] = 'You completed this course.';
-$string['getdescriptionnot'] = 'You did <b>not</b> complete this course.';
-$string['missing'] = '(You must decide if the course has to be completed or not)';
-$string['pluginname'] = 'Restriction by course completion';
-$string['privacy:null_reason'] = 'The availability course completion does not store any data.';
-$string['requires_completed'] = 'You completed this course';
-$string['requires_notcompleted'] = 'You did <b>not</b> complete this course';
-$string['title'] = 'Course completed';
+namespace availability_coursecompleted\privacy;
+
+defined('MOODLE_INTERNAL') || die();
+
+class provider implements \core_privacy\metadata\null_provider {
+
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return  string
+     */
+    public static function get_reason() : string {
+        return 'privacy:null_reason';
+    }
+}
