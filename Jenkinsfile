@@ -8,5 +8,10 @@ psql -U moodle -h localhost -d postgres -c "CREATE DATABASE phpunit ENCODING \'u
 '''
       }
     }
+    stage('config') {
+      steps {
+        writeFile(file: 'config.php', text: 'txt')
+      }
+    }
   }
 }
