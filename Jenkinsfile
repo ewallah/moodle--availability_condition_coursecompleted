@@ -3,7 +3,9 @@ pipeline {
   stages {
     stage('phpunit init') {
       steps {
-        sh 'psql -U moodle -h localhost -d postgres -c "CREATE DATABASE $JOB_NAME OWNER moodle;"'
+        sh '''psql -U moodle -h localhost -d postgres -c "DROP DATABASE IF EXISTS phpunit;"
+psql -U moodle -h localhost -d postgres -c "CREATE DATABASE phpunit ENCODING \'utf8\' OWNER moodle;"
+'''
       }
     }
   }
